@@ -41,6 +41,9 @@ int main(){
         }
     }
     
-    printf("El mcd es: %d", mcd);
-
+    printf("El mcd de  ");
+    for (int i = 0; i < tam; i++){
+        printf("%d ", valores[i]);
+    };
+    printf("es: %d", mcd);
 }
