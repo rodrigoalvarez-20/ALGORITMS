@@ -8,7 +8,8 @@ int main(){
     printf("Por favor introduzca el valor de la llave privada: ");
     scanf("%d", &priv_key);
     if(priv_key >= 10){
-        priv_key -=10;
+        int temp = priv_key / 2;
+        priv_key = priv_key - (priv_key*temp);
     }
     printf("Menu de opciones\n");
     printf("1) Codificar texto\n");
