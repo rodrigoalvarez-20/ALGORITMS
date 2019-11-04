@@ -15,8 +15,8 @@ int main(){
     distancia = sqrt(pow(x2-x1,2) + pow(y2-y1,2));
     r_vector_1 = (sqrt(pow(x1,2)+pow(y1,2)));
     r_vector_2 = (sqrt(pow(x2,2)+pow(y2,2)));
-    angulo_1 = tan(y1/x1);
-    angulo_2 = tan(y2/x2);
+    angulo_1 = atan(y1/x1)*180/3.14;
+    angulo_2 = atan(y2/x2)*180/3.14;
     printf("El punto A tiene las coordenadas: (%.2f,%.2f)\n", x1,y1);
     printf("El punto B tiene las coordenadas: (%.2f,%.2f)\n", x2,y2);
     printf("La distancia entre el punto A y B es: %.2f\n", distancia);
