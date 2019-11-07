@@ -13,10 +13,20 @@ int main(){
     scanf("%f",&y2);    
     pendiente = (y2-y1)/(x2-x1);
     distancia = sqrt(pow(x2-x1,2) + pow(y2-y1,2));
+    if(x2-x1 == 0 || y2-y1 == 0){
+	  pendiente = 0;
+    }
     r_vector_1 = (sqrt(pow(x1,2)+pow(y1,2)));
     r_vector_2 = (sqrt(pow(x2,2)+pow(y2,2)));
-    angulo_1 = atan(y1/x1)*180/3.14;
-    angulo_2 = atan(y2/x2)*180/3.14;
+    angulo_1 = atan(y1/x1)*180/3.1416;
+    angulo_2 = atan(y2/x2)*180/3.1416;
+    if(x1 < 0 && y1 >= 0) angulo_1+=180;
+    if(x1 < 0 && y1 < 0) angulo_1 += 270;
+    if(x1 >= 0 && y1 < 0) angulo_1 += 360;
+    if(x2 < 0 && y2 >= 0) angulo_2+=180;
+    if(x2 < 0 && y2 < 0) angulo_2 += 270;
+    if(x2 >= 0 && y2 < 0) angulo_2 += 360;
+    
     printf("El punto A tiene las coordenadas: (%.2f,%.2f)\n", x1,y1);
     printf("El punto B tiene las coordenadas: (%.2f,%.2f)\n", x2,y2);
     printf("La distancia entre el punto A y B es: %.2f\n", distancia);
