@@ -1,8 +1,17 @@
 #include <stdio.h>
 #include <math.h>
+
+float sumarComponentes(float, float, float, float);
+float restarComponentes(float, float, float, float);
+float multComponentes(float, float);
+float divComponentes(float, float);
+float sumAngulos(float, float);
+float restAngulos(float, float);
+
 int main(){
     float x1,y1,x2,y2,pendiente, distancia, r_vector_1, r_vector_2, angulo_1, angulo_2;
-    printf("Este programa esta diseñado para calcular la distancia entre 2 puntos con coordenadas dadas por el usuario, asi como la pendiente, ecuacion de la recta, radio vector y angulo\n");
+    printf("Este programa esta diseñado para calcular la distancia entre 2 puntos con coordenadas dadas por el usuario,");
+    printf(" asi como la pendiente, ecuacion de la recta, radio vector y angulo\n");
     printf("Introduce la coordenada X1: ");
     scanf("%f",&x1);
     printf("Introduce la coordenada Y1: ");
@@ -39,5 +48,33 @@ int main(){
     printf("El radio vector de X2 - Y2 es de: %.2f\n", r_vector_2);
     printf("El angulo de X1 - Y1 es de: %.2f\n", angulo_1);
     printf("El angulo de X2 - Y2 es de: %.2f\n", angulo_2);
+    printf("\t************\n");
+    printf("A + B = %.2f\n", sumarComponentes(x1,y1,x2,y2));
+    printf("A - B = %.2f\n", restarComponentes(x1,y1,x2,y2));
+    printf("Ra * Rb = %.2f = Aº + Bº = %.2f\n", multComponentes(r_vector_1, r_vector_2), sumAngulos(angulo_1, angulo_2));
+    printf("Ra / Rb = %.2f = Aº - Bº = %.2f\n", divComponentes(r_vector_1, r_vector_2), restAngulos(angulo_1, angulo_2));
     return 0;
+}
+
+float sumarComponentes(float X1, float Y1, float X2, float Y2){
+    return (X1 + X2) + (Y1 + Y2);
+}
+
+float restarComponentes(float X1, float Y1, float X2, float Y2){
+    return (X1 + X2) - (Y1 + Y2);
+}
+
+float multComponentes(float r_1, float r_2){
+    return (r_1 * r_2);
+}
+float divComponentes(float r_1, float r_2){
+    return (r_1 / r_2);
+}
+
+float sumAngulos(float a_1, float a_2){
+    return (a_1 + a_2);
+}
+
+float restAngulos(float a_1, float a_2){
+    return (a_1 - a_2);
 }

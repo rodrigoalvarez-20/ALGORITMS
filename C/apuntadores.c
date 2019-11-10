@@ -1,13 +1,6 @@
-//Mi primer apuntador 
-/*
-El siguiente programa recibira del usuario 2 variables enteras y utilizando una funcion que llamaremos 'intercambiando', rcibiremos como parametro
-2 apuntadores hacia las variables recibidas e intercambiaremos sus valores mediante una variable de memoria temporal local. Imprimiremos los valores originales,
-los valores en la funcion y los valores despues de
-*/
-
 #include <stdio.h>
 
-void intercambiando(int *val1, int *val2);
+void intercambiando(int *, int *);
 
 int main(){
 	int *v1,*v2, V1,V2;
@@ -19,8 +12,8 @@ int main(){
 	v1 = &V1;
 	v2 = &V2;
 	printf("Antes de la funcion: \n");
-	printf("V1: %d\n", V1);
-	printf("V2: %d\n", V2);
+	printf("V1: %d\n", *v1);
+	printf("V2: %d\n", *v2);
 	intercambiando(v1,v2);
 	printf("Saliendo de la funcion: \n");
 	printf("V1: %d\n", *v1);
