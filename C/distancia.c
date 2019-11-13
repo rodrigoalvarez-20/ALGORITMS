@@ -30,7 +30,11 @@ int main(){
     angulo_1 = atan(y1/x1)*180/3.1416;
     angulo_2 = atan(y2/x2)*180/3.1416;
     if(x1 < 0 && y1 >= 0) angulo_1+=180;
+<<<<<<< HEAD
     if(x1 < 0 && y1 < 0) angulo_1 += 180;
+=======
+    if(x1 < 0 && y1 < 0) angulo_1 += 270;
+>>>>>>> 4e98813f4a608f901815297074da4c0e730440ed
     if(x1 >= 0 && y1 < 0) angulo_1 += 360;
     if(x2 < 0 && y2 >= 0) angulo_2+=180;
     if(x2 < 0 && y2 < 0) angulo_2 += 270;
@@ -72,9 +76,17 @@ float divComponentes(float r_1, float r_2){
 }
 
 float sumAngulos(float a_1, float a_2){
+<<<<<<< HEAD
     return 360 - (a_1 + a_2);
 }
 
 float restAngulos(float a_1, float a_2){
     return 360 - (a_1 - a_2);
+=======
+    return (a_1 + a_2);
+}
+
+float restAngulos(float a_1, float a_2){
+    return (a_1 - a_2);
+>>>>>>> 4e98813f4a608f901815297074da4c0e730440ed
 }
