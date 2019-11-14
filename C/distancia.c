@@ -76,17 +76,15 @@ float divComponentes(float r_1, float r_2){
 }
 
 float sumAngulos(float a_1, float a_2){
-<<<<<<< HEAD
     return 360 - (a_1 + a_2);
 }
 
 float restAngulos(float a_1, float a_2){
     return 360 - (a_1 - a_2);
-=======
     return (a_1 + a_2);
 }
 
 float restAngulos(float a_1, float a_2){
     return (a_1 - a_2);
->>>>>>> 4e98813f4a608f901815297074da4c0e730440ed
+
 }
