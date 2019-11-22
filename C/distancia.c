@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
-float sumarComponentes(float, float, float, float);
-float restarComponentes(float, float, float, float);
+float sumarComponentes(float, float);
+float restarComponentes(float, float);
 float multComponentes(float, float);
 float divComponentes(float, float);
 float sumAngulos(float, float);
@@ -50,19 +50,19 @@ int main(){
     printf("El angulo de X1 - Y1 es de: %.2f\n", angulo_1);
     printf("El angulo de X2 - Y2 es de: %.2f\n", angulo_2);
     printf("\t************\n");
-    printf("A + B = %.2f\n", sumarComponentes(x1,y1,x2,y2));
-    printf("A - B = %.2f\n", restarComponentes(x1,y1,x2,y2));
+    printf("A + B = %.2f + j%.2f\n", sumarComponentes(x1,x2), sumarComponentes(y1,y2));
+    printf("A - B = %.2f - j%.2f\n", restarComponentes(x1,x2), restarComponentes(y1,y2));
     printf("Ra * Rb = %.2f = Aº + Bº = %.2f\n", multComponentes(r_vector_1, r_vector_2), sumAngulos(angulo_1, angulo_2));
     printf("Ra / Rb = %.2f = Aº - Bº = %.2f\n", divComponentes(r_vector_1, r_vector_2), restAngulos(angulo_1, angulo_2));
     return 0;
 }
 
-float sumarComponentes(float X1, float Y1, float X2, float Y2){
-    return (X1 + X2) + (Y1 + Y2);
+float sumarComponentes(float a, float b){
+    return a+b;
 }
 
-float restarComponentes(float X1, float Y1, float X2, float Y2){
-    return (X1 + X2) - (Y1 + Y2);
+float restarComponentes(float a, float b){
+    return a-b;
 }
 
 float multComponentes(float r_1, float r_2){
