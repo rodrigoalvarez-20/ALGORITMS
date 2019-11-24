@@ -1,4 +1,3 @@
-//Codigo de colores resistivos
 #include <stdio.h>
 #include <math.h>
 int main(){
@@ -32,8 +31,7 @@ int main(){
         if(fr_3 % 2 != 0){ fr_3++; }
         fr_3 *= fr_2;
         printf("%d%d ohm %c ", fr_1,fr_3, 241);
-    }
-    
-    fr_4 == 0 ? printf("5\%%") : printf("10\%%");	
+    }  
+    fr_4 == 0 ? printf("5\%%\n") : printf("10\%%\n");	
     return 0;
 }
