@@ -1,36 +1,37 @@
-//Mi RFC
-//Utilizando una funcion deberemos de obtener el RFC de una persona bajo el sig. esquema
-//Solicitar apellidos, nombre y la fecha de nacimiento a conveniencia de una persona en Mexico
-//El resultado a la salida de la funcion sera los datos antes mencionados junto con el RFC
 #include <stdio.h>
 #include <ctype.h>
-//Nombre, ApellidoPat, ApellidoMat, Dia, Mes, Año
+#include <string.h>
 void getRFC(char[],char[],char[], char[], char[], char[]);
 
 int main(){
-	char nombre[20], apPat[20], apMat[20];
-	char dia[2], mes[2], anio[4];
+	char nombre[20], apPat[20], apMat[20], dia[3], mes[3], anio[5], base[] = "0";
+	int dia_i, mes_i, an_i;
 	printf("Este programa sirve para calcular el RFC de una persona\n");
 	printf("Introduce tu nombre: ");
 	scanf("%s", nombre);
-	fflush(stdin);
 	printf("Introduce tu apellido paterno: ");
 	scanf("%s", apPat);
-	fflush(stdin);
 	printf("Introduce tu apellido materno: ");
 	scanf("%s", apMat);
-	fflush(stdin);
-	printf("Introduce tu dia de nacimiento en formato '00': ");
-	scanf("%s", dia);
-	fflush(stdin);
-	printf("Introduce tu mes de nacimiento en formato '00': ");
-	scanf("%s", mes);
-	fflush(stdin);
+	printf("Introduce tu dia de nacimiento: ");
+	scanf("%d", &dia_i);
+	printf("Introduce tu mes de nacimiento: ");
+	scanf("%d", &mes_i);
 	printf("Introduce tu anio de nacimiento: ");
-	scanf("%s", anio);
-	fflush(stdin);
-	printf("%s %s %s %s/%s/%s", nombre, apPat, apMat,dia,mes,anio);
-	//getRFC(nombre, apPat, apMat, dia, mes, anio);
+	scanf("%d", &an_i);
+	
+	if(dia_i > 9){
+        sprintf(dia, "%d", dia_i);
+    }else {
+        sprintf(dia, "%s%d", base, dia_i);
+    }
+    if(mes_i > 9){
+        sprintf(mes, "%d", mes_i);
+    }else {
+        sprintf(mes, "%s%d", base, mes_i);
+    }
+    sprintf(anio, "%d", an_i);
+	getRFC(nombre, apPat, apMat, dia, mes, anio);
 	return 0;
 }
 
