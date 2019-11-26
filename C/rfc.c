@@ -13,17 +13,24 @@ int main(){
 	printf("Este programa sirve para calcular el RFC de una persona\n");
 	printf("Introduce tu nombre: ");
 	scanf("%s", nombre);
+	fflush(stdin);
 	printf("Introduce tu apellido paterno: ");
 	scanf("%s", apPat);
+	fflush(stdin);
 	printf("Introduce tu apellido materno: ");
 	scanf("%s", apMat);
+	fflush(stdin);
 	printf("Introduce tu dia de nacimiento en formato '00': ");
 	scanf("%s", dia);
+	fflush(stdin);
 	printf("Introduce tu mes de nacimiento en formato '00': ");
 	scanf("%s", mes);
+	fflush(stdin);
 	printf("Introduce tu anio de nacimiento: ");
 	scanf("%s", anio);
-	getRFC(nombre, apPat, apMat, dia, mes, anio);
+	fflush(stdin);
+	printf("%s %s %s %s/%s/%s", nombre, apPat, apMat,dia,mes,anio);
+	//getRFC(nombre, apPat, apMat, dia, mes, anio);
 	return 0;
 }
 
