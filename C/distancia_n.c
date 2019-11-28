@@ -42,7 +42,7 @@ int main(){
             break;
         case 3:
             //Suma
-            if(cant_puntos > 2){
+            if(cant_puntos >= 2){
                 makeOperations(puntos, 1);
             }else{
                 printf("No hay cantidad suficiente de puntos\n");
@@ -50,7 +50,7 @@ int main(){
             break;
         case 4:
             //Resta
-            if(cant_puntos > 2){
+            if(cant_puntos >= 2){
                 makeOperations(puntos, 2);
             }else{
                 printf("No hay cantidad suficiente de puntos\n");
@@ -58,7 +58,7 @@ int main(){
             break;
         case 5:
             //Mult
-            if(cant_puntos > 2){
+            if(cant_puntos >= 2){
                 makeOperations(puntos, 3);
             }else{
                 printf("No hay cantidad suficiente de puntos\n");
@@ -66,7 +66,7 @@ int main(){
             break;
         case 6:
             //Div
-            if(cant_puntos > 2){
+            if(cant_puntos >= 2){
                 makeOperations(puntos, 4);
             }else{
                 printf("No hay cantidad suficiente de puntos\n");
@@ -74,7 +74,7 @@ int main(){
             break;
         case 7:
             //Datos
-            if(cant_puntos > 2){
+            if(cant_puntos > 0){
                 displayData(cant_puntos, puntos);
             }else{
                 printf("No hay cantidad suficiente de puntos\n");
@@ -82,17 +82,22 @@ int main(){
             break;
         case 8:
             //Ordenamiento y menor
-            if(cant_puntos > 2){
+            if(cant_puntos >= 2){
                 getDistances(cant_puntos, puntos);
-                
             }else{
                 printf("No hay cantidad suficiente de puntos\n");
+            }
+            break;
+        case 9:
+            if(remove(FICHERO) == 0){
+                printf("Se ha eliminado correctamente\n");
             }
             break;
         default:
             exit(1);
             break;
         }
-    }while(opc_usr >=1 && opc_usr <= 9);
+    }while(opc_usr >=1 && opc_usr <= 10);
+    free(puntos);
     return 0;
 }

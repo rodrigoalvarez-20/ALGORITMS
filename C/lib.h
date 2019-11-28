@@ -6,7 +6,8 @@
 #define FICHERO "puntos.txt"
 
 typedef struct Distancia{
-    int punto;
+    int PA;
+    int PB;
     float distancia;
 }Distancia;
 
@@ -15,7 +16,6 @@ typedef struct Punto{
     float y;
     float r_vect;
     float angulo;
-    Distancia distancia[];
 } Punto;
 
 void showMenu();
@@ -28,6 +28,8 @@ void makeOperations(Punto[], int);
 int getDataFromFile(Punto[]);
 void savePointToFile(Punto);
 void getDistances(int, Punto[]);
+void orderDistances(int, Distancia[], Punto[]);
+void deletePuntos(Punto[]);
 
 void showMenu(){
     printf("Menu\n");
@@ -39,17 +41,24 @@ void showMenu(){
     printf("6. Dividir puntos\n");
     printf("7. Imprimir datos de los puntos\n");
     printf("8. Obtener distancia mas corta\n");
-    printf("9. Salir\n");
+    printf("9. Eliminar puntos\n");
+    printf("10. Salir\n");
 }
 
 void saveDataPoint(float x, float y, int index, Punto puntos[]){
     puntos[index].x = x;
     puntos[index].y = y;
-    if(x == 0 || y == 0){
+    if(x == 0 && y == 0){
         puntos[index].angulo = 0;
         puntos[index].r_vect = 0;
     }else {
-        if(x > 0 && y > 0){
+        if(x == 0 && y > 0){
+            puntos[index].angulo = 90;
+        }else if(x < 0 && y == 0){
+            puntos[index].angulo = 180;
+        }else if(x == 0 && y < 0){
+            puntos[index].angulo = 270;
+        }else if(x > 0 && y > 0){
             //Cuadrante 1
             puntos[index].angulo = atan(y/x)*180/3.1416;
         }else if(x < 0 && y > 0){
@@ -163,5 +172,56 @@ void savePointToFile(Punto puntos){
 }
 
 void getDistances(int size, Punto puntos[]){
-    for(int i < )
+    printf("Numero de elementos: %d\n", size);
+    int tot_distances = 0, cont = 0;
+    for(int z = size-1; z>=1; z--) tot_distances+=z;
+    Distancia *dists = malloc(tot_distances*sizeof(Distancia));
+    for(int i = 0; i < size; i++){
+        Punto A = puntos[i];
+        float x1 = A.x, y1 = A.y;
+        for (int j = 0; j < size; j++){
+            Punto B = puntos[j];
+            if(j > i){
+                float x2 = B.x, y2 = B.y;
+                float distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+                dists[cont].PA = i;
+                dists[cont].PB = j;
+                dists[cont].distancia = distance;
+                cont++;
+            }
+        }
+    }
+    orderDistances(tot_distances, dists, puntos);
+    free(dists);
+}
+
+void orderDistances(int size, Distancia distancias[], Punto puntos[]){
+    Distancia silla;
+    printf("Distancias originales...\n");
+    for (int i = 0; i < size; i++){
+        printf("%d - %d = %.2f\n", distancias[i].PA, distancias[i].PB, distancias[i].distancia);
+    }
+
+    for(int i = 0; i < size; i++){  
+        for(int j = 0; j < size; j++){
+            if(distancias[i].distancia < distancias[j].distancia){
+                silla.PA = distancias[i].PA;
+                silla.PB = distancias[i].PB;
+                silla.distancia = distancias[i].distancia;
+                
+                distancias[i].PA = distancias[j].PA;
+                distancias[i].PB = distancias[j].PB;
+                distancias[i].distancia = distancias[j].distancia;
+                
+                distancias[j].PA = silla.PA;
+                distancias[j].PB = silla.PB;
+                distancias[j].distancia = silla.distancia;
+            }
+        }
+    }
+    Distancia dist_winn = distancias[0];
+    Punto PA = puntos[dist_winn.PA], PB = puntos[dist_winn.PB];
+    printf("La distancia mas corta es del punto %d al punto %d:\n", dist_winn.PA, dist_winn.PB);
+    printf("(%.2f, %.2f) --- (%.2f, %.2f) = %.2f\n", PA.x, PA.y, PB.x, PB.y, dist_winn.distancia);
+
 }
