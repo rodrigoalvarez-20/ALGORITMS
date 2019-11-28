@@ -30,6 +30,7 @@ int main(){
             break;
         }
     }while(opc_usr != 3);
+    free(personas);
     return 0;
 }
 
