@@ -166,7 +166,7 @@ int getDataFromFile(Punto puntos[]){
 
 void savePointToFile(Punto puntos){
     FILE *file;
-    file = fopen("puntos.txt", "a+");
+    file = fopen(FICHERO, "a+");
     fprintf(file, "%.2f %.2f %.2f %.2f\n", puntos.x, puntos.y, puntos.r_vect, puntos.angulo);
     fclose(file);
 }
@@ -221,7 +221,6 @@ void orderDistances(int size, Distancia distancias[], Punto puntos[]){
     }
     Distancia dist_winn = distancias[0];
     Punto PA = puntos[dist_winn.PA], PB = puntos[dist_winn.PB];
-    printf("La distancia mas corta es del punto %d al punto %d:\n", dist_winn.PA, dist_winn.PB);
+    printf("La distancia mas corta es del punto %d al punto %d:\n", dist_winn.PA+1, dist_winn.PB+1);
     printf("(%.2f, %.2f) --- (%.2f, %.2f) = %.2f\n", PA.x, PA.y, PB.x, PB.y, dist_winn.distancia);
-
 }
